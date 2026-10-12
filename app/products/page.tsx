@@ -1,6 +1,6 @@
 import "./productPage.css";
 import ProductsComponent from "@/components/ProductsComponent/ProductsComponent";
-import { ReactNode } from "react";
+import { ReactNode, Suspense } from "react";
 import Pagination from "@/components/Pagination/Pagination";
 import Link from "next/link";
 
@@ -41,7 +41,9 @@ export default async function ProductsPage(
 
     return (
         <>
-            <ProductsComponent products={products} heading={heading} />
+            <Suspense key={pageNum} fallback={<h1>LLLLOOOOOAAADINNG</h1>}>
+                <ProductsComponent products={products} heading={heading} />
+            </Suspense>
             <Pagination>
                 <>
                     {
